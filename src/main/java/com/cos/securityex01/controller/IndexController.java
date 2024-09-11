@@ -87,4 +87,18 @@ public class IndexController {
 		userRepository.save(user);
 		return "redirect:/";
 	}
+	
+	
+	@Secured("ROLE_MANAGER")
+	@GetMapping("/info-manager")
+	public @ResponseBody String infoManager() {
+		return "매니저 페이지입니다.";
+	}
+	
+	
+	@PreAuthorize("hasRole('ROLE_MANAGER')")
+	@GetMapping("/info-manager2")
+	public @ResponseBody String infoMAnager2() {
+		return "MANAGER2 페이지입니다.";
+	}
 }
